@@ -7,13 +7,17 @@ function Gen({ edit }) {
   const [phone, setPhone] = useState('')
 
   const handleChange = (e) => {
-    const label = e.target.previousElementSibling.innerText
-    if (label.toLowerCase() === 'name:') {
-      setName(e.target.value)
-    } else if (label.toLowerCase() === 'email:') {
-      setEmail(e.target.value)
-    } else if (label.toLowerCase() === 'phone:') {
-      setPhone(e.target.value)
+    const label = e.target.previousElementSibling.getAttribute('for')
+    switch (label) {
+      case 'name':
+        setName(e.target.value)
+        break
+      case 'email':
+        setEmail(e.target.value)
+        break
+      case 'phone':
+        setPhone(e.target.value)
+        break
     }
   }
 

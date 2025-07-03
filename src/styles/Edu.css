@@ -1,0 +1,10 @@
+.gen {
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  gap: 10px;
+}
+
+.gen input {
+  margin-left: 10px;
+}
