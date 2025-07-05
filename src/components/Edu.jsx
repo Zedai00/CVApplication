@@ -25,7 +25,7 @@ function Edu({ edit }) {
     <section className='edu'>
       <div className="title">
         <h2>Education</h2>
-        <button>Add</button>
+        {edit ? <button>Add</button> : null}
       </div>
       <div className="form-group">
         <label htmlFor="schoolName">School Name:

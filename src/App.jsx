@@ -7,13 +7,25 @@ import './App.css'
 function App() {
   const [edit, setEdit] = useState(false)
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form")
+    form.addEventListener("submit", (e) => {
+      e.preventDefault()
+      setEdit(!edit)
+    })
+
+  })
+
+
 
   return (
     <div className='app'>
-      <Gen edit={edit} />
-      <Edu edit={edit} />
-      <Exp edit={edit} />
-      <button id="edit" onClick={() => setEdit(!edit)}>{edit ? "Submit" : "Edit"}</button>
+      <form action="#">
+        <Gen edit={edit} />
+        <Edu edit={edit} />
+        <Exp edit={edit} />
+        {edit ? <button type="submit">Submit</button> : <button onClick={() => setEdit(!edit)}>Edit</button>}
+      </form>
       <div>{edit.toString()}</div>
     </div>
   )

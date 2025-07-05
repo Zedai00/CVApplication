@@ -25,7 +25,7 @@ function Exp({ edit }) {
     <section className='exp'>
       <div className="title">
         <h2>Experience</h2>
-        <button>Add</button>
+        {edit ? <button>Add</button> : null}
       </div>
       <div className="form-group">
         <label htmlFor="companyName">Company Name:
