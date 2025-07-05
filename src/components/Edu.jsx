@@ -22,17 +22,32 @@ function Edu({ edit }) {
   }
 
   return (
-    <div className='gen'>
-      <label htmlFor="schoolName">School Name:
-      </label>
-      {edit ? <input type="text" id="schoolName" onChange={handleChange} value={schoolName} /> : <div>{schoolName}</div>}
-      <label htmlFor="titleOfStudy">Title Of Study:
-      </label>
-      {edit ? <input type="text" id="titleOfStudy" onChange={handleChange} value={titleOfStudy} /> : <div>{titleOfStudy}</div>}
-      <label htmlFor="dateOfStudy">Date Of Study:
-      </label>
-      {edit ? <input type="text" id="dateOfStudy" onChange={handleChange} value={dateOfStudy} /> : <div>{dateOfStudy}</div>}
-    </div>
+    <section className='edu'>
+      <div className="title">
+        <h2>Education</h2>
+        <button>Add</button>
+      </div>
+      <div className="form-group">
+        <label htmlFor="schoolName">School Name:
+        </label>
+        {edit ? <input type="text" id="schoolName" onChange={handleChange} value={schoolName} /> :
+          <input type="text" disabled className="show" />}
+      </div>
+      <div className="center">
+        <div className="form-group">
+          <label htmlFor="titleOfStudy">Title Of Study:
+          </label>
+          {edit ? <input type="text" id="titleOfStudy" onChange={handleChange} value={titleOfStudy} /> :
+            <input type="text" disabled className="show" />}
+        </div>
+        <div className="form-group">
+          <label htmlFor="dateOfStudy">Date Of Study:
+          </label>
+          {edit ? <input type="date" id="dateOfStudy" onChange={handleChange} value={dateOfStudy} /> :
+            <input type="date" disabled className="show" />}
+        </div>
+      </div>
+    </section >
   )
 
 }

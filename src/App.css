@@ -1,4 +1,57 @@
 .app {
   padding: 10px;
-  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+label {
+  white-space: nowrap;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group input {
+  flex: 1;
+  border: none;
+  border-bottom: 0.1px black solid;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-bottom: 0.1px black solid;
+}
+
+input:disabled {
+  background: none;
+  color: black;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+section input {
+  margin-left: 10px;
+}
+
+.show {
+  border: none !important;
 }

@@ -22,17 +22,32 @@ function Gen({ edit }) {
   }
 
   return (
-    <div className='gen'>
-      <label htmlFor="name">Name:
-      </label>
-      {edit ? <input type="text" id="name" onChange={handleChange} value={name} /> : <div>{name}</div>}
-      <label htmlFor="email">Email:
-      </label>
-      {edit ? <input type="text" id="email" onChange={handleChange} value={email} /> : <div>{email}</div>}
-      <label htmlFor="phone">Phone:
-      </label>
-      {edit ? <input type="text" id="phone" onChange={handleChange} value={phone} /> : <div>{phone}</div>}
-    </div>
+    <section className='gen'>
+      <div className="title">
+        <h2>General Information</h2>
+        <button>Add</button>
+      </div>
+      <div className="form-group">
+
+        <label htmlFor="name">Name:
+        </label>
+        {edit ? <input type="text" id="name" onChange={handleChange} value={name} /> : <input type="text" disabled className="show" />}
+      </div>
+      <div className="form-group">
+
+        <label htmlFor="email">Email:
+        </label>
+        {edit ? <input type="text" id="email" onChange={handleChange} value={email} /> : <input type="text" disabled className="show" />}
+
+      </div>
+      <div className="form-group">
+
+        <label htmlFor="phone">Phone:
+        </label>
+        {edit ? <input type="text" id="phone" onChange={handleChange} value={phone} /> : <input type="text" disabled className="show" />}
+
+      </div>
+    </section>
   )
 
 }

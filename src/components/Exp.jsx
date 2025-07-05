@@ -22,17 +22,30 @@ function Exp({ edit }) {
   }
 
   return (
-    <div className='gen'>
-      <label htmlFor="companyName">Company Name:
-      </label>
-      {edit ? <input type="text" id="companyName" onChange={handleChange} value={companyName} /> : <div>{companyName}</div>}
-      <label htmlFor="positionTitle">Position Title:
-      </label>
-      {edit ? <input type="text" id="positionTitle" onChange={handleChange} value={positionTitle} /> : <div>{positionTitle}</div>}
-      <label htmlFor="responsibility">Responsibility:
-      </label>
-      {edit ? <input type="text" id="responsibility" onChange={handleChange} value={responsibility} /> : <div>{responsibility}</div>}
-    </div>
+    <section className='exp'>
+      <div className="title">
+        <h2>Experience</h2>
+        <button>Add</button>
+      </div>
+      <div className="form-group">
+        <label htmlFor="companyName">Company Name:
+        </label>
+        {edit ? <input type="text" id="companyName" onChange={handleChange} value={companyName} /> :
+          <input type="text" disabled className="show" />}
+      </div>
+      <div className="form-group">
+        <label htmlFor="positionTitle">Position Title:
+        </label>
+        {edit ? <input type="text" id="positionTitle" onChange={handleChange} value={positionTitle} /> :
+          <input type="text" disabled className="show" />}
+      </div>
+      <div className="form-group">
+        <label htmlFor="responsibility">Responsibility:
+        </label>
+        {edit ? <input type="text" id="responsibility" onChange={handleChange} value={responsibility} /> :
+          <input type="text" disabled className="show" />}
+      </div>
+    </section>
   )
 
 }
