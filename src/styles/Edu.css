@@ -1,13 +1,18 @@
-.center {
+.oneline {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  gap: 5px;
+  gap: 10px;
+}
+
+.oneline .form-group {
+  flex: 1;
 }
 
 .edu label {
   width: 110px;
+}
+
+.oneline label {
+  width: auto;
 }
 
 [type="date"] {

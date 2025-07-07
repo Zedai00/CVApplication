@@ -24,7 +24,7 @@ function App() {
         <Gen edit={edit} />
         <Edu edit={edit} />
         <Exp edit={edit} />
-        {edit ? <button type="submit">Submit</button> : <button onClick={() => setEdit(!edit)}>Edit</button>}
+        {edit ? <button onClick={() => setEdit(!edit)}>Submit</button> : <button onClick={() => setEdit(!edit)}>Edit</button>}
       </form>
       <div>{edit.toString()}</div>
     </div>

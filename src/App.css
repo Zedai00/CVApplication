@@ -19,6 +19,7 @@ label {
   justify-content: space-between;
   align-items: center;
   height: 18px;
+  margin-bottom: 10px;
 }
 
 .form-group input {
