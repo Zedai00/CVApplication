@@ -1,57 +1,59 @@
-// Edu.jsx
-import { useState } from "react"
-import '../styles/Edu.css'
+import { useEffect } from "react"
 
-const createTemplate = () => ({
+const createTemplate = (withData = false) => ({
   id: crypto.randomUUID(),
   items: [
-    { name: "schoolName", label: "School Name", type: "text", value: "" },
-    { name: "titleOfStudy", label: "Title Of Study", type: "text", value: "" },
-    { name: "from", label: "From", type: "date", value: "" },
-    { name: "to", label: "To", type: "date", value: "" }
+    { name: "school", label: "School Name", type: "text", value: withData ? "Example High School" : "" },
+    { name: "degree", label: "Degree", type: "text", value: withData ? "Bachelor of Science" : "" },
+    { name: "from", label: "From", type: "date", value: withData ? "2018-06-01" : "" },
+    { name: "to", label: "To", type: "date", value: withData ? "2022-05-01" : "" }
   ]
 })
 
-function Edu({ edit }) {
-  const [items, setItems] = useState([createTemplate()])
+function Edu({ edit, prefill, data, setData }) {
+  useEffect(() => {
+    if (prefill) {
+      setData([createTemplate(true)])
+    }
+  }, [prefill, setData])
 
   function handleChange(e, groupId) {
-    const { id: name, value } = e.target;
-    setItems(prevItems =>
-      prevItems.map(group => {
-        if (group.id !== groupId) return group;
-
-        const updatedItems = group.items.map(item =>
-          item.name === name ? { ...item, value } : item
-        );
-
-        return { ...group, items: updatedItems };
-      })
-    );
+    const { id: name, value } = e.target
+    setData(prev =>
+      prev.map(group =>
+        group.id !== groupId
+          ? group
+          : {
+            ...group,
+            items: group.items.map(item =>
+              item.name === name ? { ...item, value } : item
+            )
+          }
+      )
+    )
   }
 
   function handleAdd() {
-    setItems(prev => [...prev, createTemplate()])
+    setData(prev => [...prev, createTemplate(false)])
   }
 
   function handleDelete(idToDelete) {
-    setItems(prev => prev.filter(group => group.id !== idToDelete))
+    setData(prev => prev.filter(group => group.id !== idToDelete))
   }
 
   return (
-    <section className='edu'>
+    <section className="edu">
       <div className="title">
         <h2>Education</h2>
-        {edit && <button type="button" className="add-btn" onClick={handleAdd}>＋</button>}
+        {edit && <button onClick={handleAdd} type="button">＋</button>}
       </div>
 
-      {items.map(group => (
+      {data.map(group => (
         <div key={group.id} className="edu-group">
-          {edit && items.length > 1 && (
-            <button type="button" className="delete-btn" onClick={() => handleDelete(group.id)}>×</button>
+          {edit && data.length > 1 && (
+            <button className="delete-btn" onClick={() => handleDelete(group.id)} type="button">×</button>
           )}
-
-          {group.items.slice(0, 2).map((item) => (
+          {group.items.map(item => (
             <div key={`${item.name}-${group.id}`} className="form-group">
               <label htmlFor={item.name}>{item.label}:</label>
               {edit ? (
@@ -62,38 +64,12 @@ function Edu({ edit }) {
                   onChange={(e) => handleChange(e, group.id)}
                 />
               ) : (
-                <input
-                  type={item.type}
-                  value={item.value}
-                  disabled
-                  className="show"
-                />
+                <p className="show">
+                  {item.value}
+                </p>
               )}
             </div>
           ))}
-
-          <div className="oneline">
-            {group.items.slice(2, 4).map((item) => (
-              <div key={`${item.name}-${group.id}`} className="form-group">
-                <label htmlFor={item.name}>{item.label}:</label>
-                {edit ? (
-                  <input
-                    type={item.type}
-                    id={item.name}
-                    value={item.value}
-                    onChange={(e) => handleChange(e, group.id)}
-                  />
-                ) : (
-                  <input
-                    type={item.type}
-                    value={item.value}
-                    disabled
-                    className="show"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       ))}
     </section>
