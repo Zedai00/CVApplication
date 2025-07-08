@@ -25,7 +25,7 @@ src/
 │   └── Exp.jsx        # Experience section
 ├── App.jsx            # Main component
 ├── App.css            # App-level styles
-├── index.js           # Entry point
+├── main.jsx           # Entry point
 └── index.css          # Global styles
 ```
 
