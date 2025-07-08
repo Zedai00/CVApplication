@@ -5,31 +5,28 @@ import Exp from './components/Exp'
 import './App.css'
 
 function App() {
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState(true)
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form")
-    form.addEventListener("submit", (e) => {
-      e.preventDefault()
-      setEdit(!edit)
-    })
-
-  })
-
-
+  function toggleMode(e) {
+    e.preventDefault()
+    setEdit(prev => !prev)
+  }
 
   return (
     <div className='app'>
-      <form action="#">
+      <form onSubmit={toggleMode}>
         <Gen edit={edit} />
         <Edu edit={edit} />
         <Exp edit={edit} />
-        {edit ? <button onClick={() => setEdit(!edit)}>Submit</button> : <button onClick={() => setEdit(!edit)}>Edit</button>}
+        <div className="action">
+          <button type="submit">
+            {edit ? 'Submit' : 'Edit'}
+          </button>
+        </div>
       </form>
-      <div>{edit.toString()}</div>
     </div>
   )
 }
 
-
 export default App
+
